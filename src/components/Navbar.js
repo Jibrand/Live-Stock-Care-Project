@@ -104,7 +104,7 @@ function NavBar() {
   const buttonStyle = {
     marginRight: "0px",
     marginLeft: "5px",
-    backgroundColor: isHovered ? "#430e7e" : "#e5b509",
+    backgroundColor: isHovered ? "#430e7e" : "#FFC200",
     color: isHovered ? "white" : "black",
     padding: "10px 20px",
     border: "none",
@@ -211,7 +211,7 @@ function NavBar() {
               </StyledBadge>
             </IconButton>
           )}
-          <img src={logo} height='90px' width='90px' className="  logmo" alt="brand" onClick={() => { navigate('/') }} />
+          <img src={logo} height='90px' width='90px'  className=" sm:ml-0  ml-11 logmo" alt="brand" onClick={() => { navigate('/') }} />
         </Navbar.Brand>
         <Navbar.Toggle
           aria-controls="responsive-navbar-nav"
@@ -272,8 +272,8 @@ function NavBar() {
        
           <IconButton aria-label="cart" className="cart_button" onClick={sendToCart} >
 
-            <Badge badgeContent={totalQuantities <= 0 ? 0 : totalQuantities} color="secondary">
-              <ShoppingCartIcon style={{ color: "#e5b509" }} />
+            <Badge badgeContent={totalQuantities <= 0 ? 0 : totalQuantities} >
+              <ShoppingCartIcon style={{ color: "#FFC200" }} />
             </Badge>
 
           </IconButton>

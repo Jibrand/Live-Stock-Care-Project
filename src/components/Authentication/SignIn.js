@@ -146,7 +146,7 @@ function App() {
         <br />
         <MDBRow>
           <MDBCol sm="6">
-            <div className="d-flex flex-row ps-5 pt-5">
+            <div className="d-flex flex-row ps-5 pt-5 sm:mt-0 mt-10" >
               <img
                 className="auth-logo"
                 src={img}

@@ -9,7 +9,18 @@ import Toolstack from "./Toolstack";
 import { Button } from "@mui/material";
 import { useTranslation } from 'react-i18next'
 import { Link, useNavigate } from "react-router-dom";
-import myImg from "../../Assets/all1.jpg";
+import myImg from "../../Assets/coww.jpg";
+import logo from "../../Assets/logocownt.png";
+import { FaLinkedinIn,FaInstagram ,FaPatreon} from "react-icons/fa";
+import {BsFacebook} from "react-icons/bs"
+import {
+  AiFillStar,
+  AiFillYoutube,
+  AiOutlineHome,
+  AiOutlineFundProjectionScreen,
+  AiOutlineUser,
+  AiFillTwitterCircle,
+} from "react-icons/ai";
 import myImg1 from "../../Assets/ABOUT2P.JPG";
 // import myImg12 from "../../Assets/aboutback.JPG";
 import ClientReview from './ClientsReview'
@@ -60,6 +71,7 @@ function About() {
             <br />
             <br />
             <br />
+            <br />  <br />
             <br />
             <img src={myImg} className="img-fluid rounded box-shadow" alt="avatar" />
             
@@ -68,7 +80,7 @@ function About() {
 
           <Col md={6} className="about-Avatar-description">
 
-            <p className="home-about-body-custom" style={{ color: "#e5b509" }}><>  {t('h7_1')}</></p>
+            <p className="home-about-body-custom" style={{ color: "#e5b509" }}><>  </></p>
             <h1 className="home-about-body-under" style={{ fontSize: "2.6em", color: "black", textAlign: "left", fontFamily: "Sans-serif" }}><b>{t('h7_2')} <span className="purple">    </span>  </b> </h1>
             <p className="home-about-body-under-under" style={{ color: "black", textAlign: "left" }}>
               <p> {t('b1_3')}
@@ -90,14 +102,91 @@ function About() {
       <p>^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^</p>
       <Cards />
       {/* <Home_Ase />  */}
-      <ClientReview />
+       <ClientReview /> 
       {/* <Home_Ase_two /> */}
       {/* <C2 /> */}
    
 
       {/* <Home3 /> */}
       {/* <Footer/> */}
-      <Footer />
+      <Container fluid className="footerabout sm:-mt-0 -mt-16" >
+      <Row>
+      <h2  style={{ textAlign: "center",color:"white" }}>About the Company</h2>
+      <p className="hj" style={{ textAlign: "center",color:"white" }}> Livestock Care is a project managed by Bioamaz Cooperative </p>
+
+        <Col md="3" className="footer-copywright">
+          <img src={logo} className="img-fluid footerlogo" alt="brand" style={{marginTop:"-80px"}} />
+        </Col>
+        <Col md="3" className="footer-copywright">
+        <h3 style={{ textAlign: "center" }}><><>Livestock Care LLC</></></h3>
+          <h3 style={{ textAlign: "center" }}>TAX ID 32080773883</h3>
+          <h3 style={{ textAlign: "center" }}>3 Greenway Plaza #1320.</h3>
+          <h3 style={{ textAlign: "center" }}>Karachi, TX 77046</h3>
+
+        </Col>
+        <Col md="3" className="footer-copywrightq sm:mt-0 mt-10">
+          <h3 className="mobile-vd">________________________</h3>
+          <h3 style={{ textAlign: "center" }}><><>Livestock Care LLC</></></h3>
+          <h3 style={{ textAlign: "center" }}>TAX ID 32080773883</h3>
+          <h3 style={{ textAlign: "center" }}>3 Greenway Plaza #1320.</h3>
+          <h3 style={{ textAlign: "center" }}>Karachi, TX 77046</h3>
+
+        </Col>
+        <Col md="3" className="footer-body"  >
+         
+          <h2 style={{ color: "white" }}>{t('fotr_7')}</h2>
+          <h2 style={{ color: "yellow", lineHeight: "5px", marginBottom: "13px" }}>__________________</h2>
+          <br/>
+          <ul className="footer-icons">
+            <li className="social-icons">
+              <a href="#" style={{ color: "white", fontSize: "20px" }} target="_blank" rel="noopener noreferrer" > <AiFillYoutube /></a>
+            </li>
+            <li className="social-icons">
+              <a
+                href="#"
+                style={{ color: "white", fontSize: "23px" }}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <FaLinkedinIn />
+              </a>
+            </li>
+            <li className="social-icons">
+              <a
+                href="#"
+
+                style={{ color: "white", fontSize: "20px" }}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <FaInstagram />
+              </a>
+            </li>
+            <li className="social-icons">
+              <a
+                href="#"
+                style={{ color: "white", fontSize: "20px" }}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <BsFacebook />
+              </a>
+            </li>
+            <li className="social-icons">
+              <a
+                href="#"
+                style={{ color: "white", fontSize: "20px" }}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <AiFillTwitterCircle />
+              </a>
+            </li>
+          </ul>
+
+        </Col>
+      </Row>
+    </Container>
     </>
 
   );
