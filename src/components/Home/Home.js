@@ -112,10 +112,9 @@ function Home() {
       <section className="text-gray-600 body-font  ">
         <div className="container mx-auto flex px-5 py-24 md:flex-row flex-col items-center">
           <div className="lg:flex-grow md:w-1/2 lg:pr-24 md:pr-16 flex flex-col md:items-start md:text-left mb-16 md:mb-0 items-center text-center">
-            <h1 className="title-font sm:text-5xl text-3xl mb-4 font-extrabold text-gray-900 sm:mt-[100px]   herotext">Before they sold out
-              <br className="hidden lg:inline-block" />readymade gluten
+            <h1 className="title-font sm:text-5xl text-3xl mb-4 font-extrabold text-gray-900 sm:mt-[100px]   herotext">No worries are there when<span style={{  color:"#FFC200"}}> Livestock Care </span> is here.
             </h1>
-            <p className="mb-8 leading-relaxed">Copper mug try-hard pitchfork pour-over freegan heirloom neutra air plant cold-pressed tacos poke beard tote bag. Heirloom echo park mlkshk tote bag selvage hot chicken authentic tumeric truffaut hexagon try-hard chambray.</p>
+            <p className="mb-8 leading-relaxed">Too much worry about bad smell of manure? Don't have to worry as we are here to take care of all that mess in most economical way. Join us today and relief yourself.</p>
             <div className="flex justify-center">
               {/* <button className="inline-flex text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded text-lg bg-yellowe">Button</button> */}
               {/* <button onClick={() => Navigate('/about')} className="bg-yellowe ml-36 inline-flex text-gray-700 bg-gray-100 border-0 py-2 px-6 focus:outline-none hover:bg-gray-200 rounded text-lg sm:mr-0 mr-28">Explore More</button> */}
