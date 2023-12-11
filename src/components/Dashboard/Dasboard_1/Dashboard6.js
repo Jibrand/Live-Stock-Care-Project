@@ -212,10 +212,7 @@ export default function Dashboard() {
 
             </Typography>
          
-            <select className='text-black' value={selectedLanguage} onChange={handleLanguageChange}>
-              <option value="Navbar_en">English</option>
-              <option value="Navbar_Spn">Spanish</option>
-            </select>
+           
             <Box sx={{ flexGrow: 0 }}>
               <Tooltip title="Open settings">
                 <IconButton onClick={handleOpenUserMenu} sx={{ p: 1 }}>

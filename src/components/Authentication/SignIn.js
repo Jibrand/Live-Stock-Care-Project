@@ -89,7 +89,7 @@ function App() {
 
     if (email && password) {
       try {
-        const response = await axios.post(`${Api}/api/login/user`, {
+        const response = await axios.post(`${Api}/api/login/user/pm`, {
           email,
           password,
         });

@@ -27,7 +27,7 @@ import Deposits2 from './Deposits2';
 import Deposits21 from './Deposits21';
 import Deposits3 from './Deposits3';
 import Orders2 from './Orders2';
-import img from '../../../Assets/logo.png'
+import img from '../../../Assets/logocowt.png'
 import Avatar from '@mui/material/Avatar';
 import Menu from '@mui/material/Menu';
 import Tooltip from '@mui/material/Tooltip';
@@ -228,10 +228,7 @@ export default function Dashboard() {
                   >
 
                   </Typography>
-                  <select className='text-black' value={selectedLanguage} onChange={handleLanguageChange}>
-                    <option value="Navbar_en">English</option>
-                    <option value="Navbar_Spn">Spanish</option>
-                  </select>
+                  
 
                   <Box sx={{ flexGrow: 0 }}>
                     <Tooltip title="Open settings">
@@ -309,7 +306,7 @@ export default function Dashboard() {
                     {/* Chart */}
 
                     {/* Recent Deposits */}
-                    <Grid item xs={12} md={4} lg={3}>
+                    <Grid item xs={12} md={4} lg={6}>
                       <Paper
                         style={{ borderRadius: "20px", backgroundColor: "#e5b509" }}
                         sx={{
@@ -323,7 +320,7 @@ export default function Dashboard() {
                         <Deposits1 />
                       </Paper>
                     </Grid>
-                    <Grid item xs={12} md={4} lg={2}>
+                    <Grid item xs={12} md={4} lg={6}>
                       <Paper
                         style={{ borderRadius: "20px" }}
                         sx={{
@@ -337,48 +334,7 @@ export default function Dashboard() {
                         <Deposits />
                       </Paper>
                     </Grid>
-                    <Grid item xs={12} md={4} lg={2}>
-                      <Paper
-                        style={{ borderRadius: "20px" }}
-                        sx={{
-                          p: 2,
-                          display: 'flex',
-                          flexDirection: 'column',
-                          height: 240,
-
-                        }}
-                      >
-                        <Deposits21 />
-                      </Paper>
-                    </Grid>
-                    <Grid item xs={12} md={4} lg={3}>
-                      <Paper
-                        style={{ borderRadius: "20px" }}
-                        sx={{
-                          p: 2,
-                          display: 'flex',
-                          flexDirection: 'column',
-                          height: 240,
-
-                        }}
-                      >
-                        <Deposits3 />
-                      </Paper>
-                    </Grid>
-                    <Grid item xs={12} md={4} lg={2}>
-                      <Paper
-                        style={{ borderRadius: "20px" }}
-                        sx={{
-                          p: 2,
-                          display: 'flex',
-                          flexDirection: 'column',
-                          height: 240,
-
-                        }}
-                      >
-                        <Deposits2 />
-                      </Paper>
-                    </Grid>
+                   
                     {/* Recent Orders */}
                     <Grid item xs={12}>
                       <Paper

@@ -26,7 +26,7 @@ import Deposits1 from './Deposits1';
 import Deposits2 from './Deposits2';
 import Deposits3 from './Deposits3';
 import Orders4 from './Orders4';
-import img from '../../../Assets/logo.png'
+import img from '../../../Assets/logocowt.png'
 import Avatar from '@mui/material/Avatar';
 import Menu from '@mui/material/Menu';
 import Tooltip from '@mui/material/Tooltip';
@@ -212,10 +212,7 @@ export default function Dashboard() {
 
             </Typography>
          
-            <select className='text-black' value={selectedLanguage} onChange={handleLanguageChange}>
-              <option value="Navbar_en">English</option>
-              <option value="Navbar_Spn">Spanish</option>
-            </select>
+           
             <Box sx={{ flexGrow: 0 }}>
               <Tooltip title="Open settings">
                 <IconButton onClick={handleOpenUserMenu} sx={{ p: 1 }}>

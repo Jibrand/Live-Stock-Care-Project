@@ -2,11 +2,11 @@ import sanityClient from '@sanity/client';
 import imageUrlBuilder from '@sanity/image-url';
 
 export const client = sanityClient({
-  projectId: 'mza2e2t2',
+  projectId: 'n8dkd9q1',
   dataset: 'production',
   apiVersion: '2022-02-01',
   useCdn: false,
-  token: 'sku0jjUFytghq4MenBXACTHHcK8dcaQAJ97jPbBS8KBxe60kakZZALdBv7j4qUlVF6ZmeYQySBf7QT1M53YLFwxLGpzYik6dQjkYD2tGXRUHMAlWDarQftYohOzt52xShjcfbv7XqJuEg8t9cjj7MgA3MlJU4cabGDrujDyZkebSwkT42T4H',
+  token: 'sku887LF1wDpIHPGmZH5ZT8W9xWjLAZ5OKEv9EM3eyOAUgI4ShX8yuscsiIX9JrHRcUCEJCNvHBvSANFJsjDvz3TBEm61l8iEO9rtgQEbOEPftWa4OxzmQunTCWGhgAOCudIZWwNh9XjBVKMVVL2VZ94oP7XeHmdNtwnamrNeEJFzn4n9lyc',
 });
 
 const builder = imageUrlBuilder(client);

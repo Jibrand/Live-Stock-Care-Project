@@ -95,22 +95,14 @@ export default function Deposits() {
                 <div style={{ textAlign: "left", color: "GrayText" }} >
                   <p style={{ color: "#e5b509", fontWeight: "bold" }}><span style={{ fontWeight: "bold", color: "#430e7e" }}>{t('l57')}: </span><span style={{ fontSize: "18px" }} className='tedko'>{row._id}</span> </p>
                   <p style={{ color: "#e5b509", fontWeight: "bold" }}><span style={{ fontWeight: "bold", color: "#430e7e" }}>Date: </span> <span style={{ fontSize: "18px" }} className='lato'>      {new Date(row.date1).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}               </span> </p>
-                  <p style={{ color: "#e5b509", fontWeight: "bold" }}><span style={{ fontWeight: "bold", color: "#430e7e" }}>Country: </span> <span style={{ fontSize: "18px" }} className='lato'>       {row.country}              </span> </p>
-                  <p style={{ color: "#e5b509", fontWeight: "bold" }}><span style={{ fontWeight: "bold", color: "#430e7e" }}>Department: </span> <span style={{ fontSize: "18px" }} className='lato'>       {row.department}                 </span> </p>
                   <p style={{ color: "#e5b509", fontWeight: "bold" }}><span style={{ fontWeight: "bold", color: "#430e7e" }}>District: </span> <span style={{ fontSize: "18px" }} className='lato'>         {row.district}                </span> </p>
                   <p style={{ color: "#e5b509", fontWeight: "bold" }}><span style={{ fontWeight: "bold", color: "#430e7e" }}>Local Town: </span> <span style={{ fontSize: "18px" }} className='lato'>      {row.localtown}                   </span> </p>
-                  <p style={{ color: "#e5b509", fontWeight: "bold" }}><span style={{ fontWeight: "bold", color: "#430e7e" }}>GPS X: </span> <span style={{ fontSize: "18px" }} className='lato'>    {row.gpsx}                     </span> </p>
-                  <p style={{ color: "#e5b509", fontWeight: "bold" }}><span style={{ fontWeight: "bold", color: "#430e7e" }}>GPS Y: </span> <span style={{ fontSize: "18px" }} className='lato'>   {row.gpsy}                      </span> </p>
                 </div>
               ))}
               {abouts.map((about, index) => (
 
 
                 <div style={{ textAlign: "left", color: "GrayText" }} >
-                  <p style={{ color: "#e5b509", fontWeight: "bold" }}><span style={{ fontWeight: "bold", color: "#430e7e" }}>Custody Agent Name: </span>  {about.categoryName} <span style={{ fontSize: "18px" }} className='lato'>              </span> </p>
-                  <p style={{ color: "#e5b509", fontWeight: "bold" }}><span style={{ fontWeight: "bold", color: "#430e7e" }}>Custody Couple Name: </span> <span style={{ fontSize: "18px" }} className='lato'>      {about.couplename}            </span> </p>
-                  <p style={{ color: "#e5b509", fontWeight: "bold" }}><span style={{ fontWeight: "bold", color: "#430e7e" }}>Custody Number of Childern: </span> <span style={{ fontSize: "18px" }} className='lato'>             {about.numofchild}       </span> </p>
-                  <p style={{ color: "#e5b509", fontWeight: "bold" }}><span style={{ fontWeight: "bold", color: "#430e7e" }}>Custody Number of Childern Under 18: </span> <span style={{ fontSize: "18px" }} className='lato'>           {about.numofchildundr18}                    </span> </p>
                   <div className="grid grid-cols-1 md:grid-cols-2">
                     <div> <p style={{ color: "#e5b509", fontWeight: "bold" }}> <span style={{ fontWeight: "bold", color: "#430e7e" }}>Custody Picture: </span> {about.pic ? (<img src={urlFor(about.pic).toString()} alt="Custody Agent" className="object-contain h-48 w-96" />) : ("not uploaded  ")} <span style={{ fontSize: "18px" }} className='lato'></span> </p> </div>
                     <div> <p style={{ color: "#e5b509", fontWeight: "bold" }}> <span style={{ fontWeight: "bold", color: "#430e7e" }}>Custody Couple Picture: </span> {about.Couplepic ? (<img src={urlFor(about.Couplepic).toString()} alt="Custody Agent" className="object-contain h-48 w-96" />) : ("not uploaded")} <span style={{ fontSize: "18px" }} className='lato'></span> </p> </div>

@@ -52,12 +52,7 @@ const ListItems = () => {
         </ListItemIcon>
         <ListItemText primary="Transactions" />
       </ListItemButton> */}
-      <ListItemButton onClick={wq}>
-        <ListItemIcon>
-          <RequestPageIcon />
-        </ListItemIcon>
-        <ListItemText primary={t('l33')} />
-      </ListItemButton>
+    
       
     </React.Fragment>
   );

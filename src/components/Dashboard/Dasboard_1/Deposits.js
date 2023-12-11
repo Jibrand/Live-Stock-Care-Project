@@ -45,7 +45,7 @@ const [totalinvestments, setTotalinvestments] = useState(0)
       <div style={{ marginTop: "50px", }}>
         <h4 style={{ color: "#430e7e" }}><b> {t('l27')}</b></h4>
         <Typography component="p" variant="h4">
-          ${totalinvestments}
+          {totalinvestments}Rs
         </Typography>
       </div>
     </React.Fragment>

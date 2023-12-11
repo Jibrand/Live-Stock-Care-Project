@@ -18,7 +18,7 @@ import PortableText from "react-portable-text"
 
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
-import { bottomNavigationActionClasses } from "@mui/material";
+import { bottomNavigationActionClasses, useStepContext } from "@mui/material";
 import { useNavigate, Link } from "react-router-dom";
 import CartCount from "./CartCount";
 import { useTranslation } from 'react-i18next'
@@ -35,35 +35,54 @@ function App({ searchInput, categoryName }) {
     about.categoryName.toLowerCase().includes(searchInput.toLowerCase())
   );
 
+  // useEffect(() => {
+
+  //   const fetchProducts = async () => {
+  //     const productsData = await client.fetch('*[_type == "Products"]');
+  //     const productCategoryIds = productsData.map((product) => product.category._ref);
+  //     const categoryQuery = `*[_type == "category" && _id in [${productCategoryIds
+  //       .map((id) => `"${id}"`)
+  //       .join(",")}]]`;
+
+  //     const [categoriesData] = await Promise.all([
+  //       client.fetch(categoryQuery),
+  //     ]);
+
+  //     const categoryMap = {};
+  //     categoriesData.forEach((category) => {
+  //       categoryMap[category._id] = category.name;
+  //     });
+
+  //     const productsWithCategoryName = productsData.map((product) => ({
+  //       ...product,
+  //       categoryName: categoryMap[product.category._ref],
+  //     }));
+
+  //     setAbouts(productsWithCategoryName);
+  //     setTotalCount(productsData.length);
+  //   };
+
+  //   fetchProducts();
+  // }, []);
+
+  const [products, setProducts] = useState([])
+  const [isLoading, setIsLoading] = useState(false)
   useEffect(() => {
-
+    const query = `count(*[_type == 'Products'])`;
     const fetchProducts = async () => {
-      const productsData = await client.fetch('*[_type == "Products"]');
-      const productCategoryIds = productsData.map((product) => product.category._ref);
-      const categoryQuery = `*[_type == "category" && _id in [${productCategoryIds
-        .map((id) => `"${id}"`)
-        .join(",")}]]`;
-
-      const [categoriesData] = await Promise.all([
-        client.fetch(categoryQuery),
-      ]);
-
-      const categoryMap = {};
-      categoriesData.forEach((category) => {
-        categoryMap[category._id] = category.name;
-      });
-
-      const productsWithCategoryName = productsData.map((product) => ({
-        ...product,
-        categoryName: categoryMap[product.category._ref],
-      }));
-
-      setAbouts(productsWithCategoryName);
-      setTotalCount(productsData.length);
+        const [productsData, count, a] = await Promise.all([
+            client.fetch('*[_type == "category"]'),
+            client.fetch(query),
+            client.fetch(' *[_type == "Products"] | order(dateCreated desc)[0..2] ')
+        ]);
+        setProducts(productsData)
+        setTotalCount(count);
+        setAbouts(a)
+        setIsLoading(false);
     };
 
     fetchProducts();
-  }, []);
+}, []);
 
 
 
@@ -84,7 +103,7 @@ function App({ searchInput, categoryName }) {
                     <div class="mt-4">
                       <div class="grid grid-cols-2 ">
                         <div> <h3 class="text-gray-500 text-xs tracking-widest title-font mb-1 text-left">   {about.categoryName} </h3> </div>
-                        <div> <h3 class="text-gray-500   text-xl tracking-widest title-font mb-1 text-right  font-sans">  ${about.price} </h3> </div>
+                        <div> <h3 class="text-gray-500   text-xl tracking-widest title-font mb-1 text-right  font-sans">  {about.price}Rs </h3> </div>
                       </div>
                       <h1 class="text-gray-900 title-font text-3xl font-medium">{about.name}</h1>
                       <p class="text-gray-900 title-font text-left ">

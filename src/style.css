@@ -165,7 +165,7 @@ button:focus {
 /* Navbar Section  */
 /* --------- */
 .sticky {
-  background-color: #330957 !important;
+  background-color: #989898  !important;
   transition: all 0.3s ease-out 0s !important;
   box-shadow: 0px 10px 10px 0px rgba(255, 251, 0, 0.171) !important;
   backdrop-filter: blur(15px) !important;
@@ -176,7 +176,7 @@ button:focus {
   transition: all 0.3s ease-out 0s !important;
   padding: 0.3rem 2rem !important;
   font-size: 1.2rem !important;
-  background-color: #280A43;
+  background-color: #989898 ;
 
 }
 
@@ -185,6 +185,8 @@ button:focus {
   background-color: transparent !important;
   border-color: transparent !important;
 }
+
+
 
 .navbar-toggler span {
   display: block !important;
@@ -2010,4 +2012,51 @@ button:focus {
 
 .fork-btn-inner::after {
   display: none !important;
+}
+
+/* Add these styles to your CSS file */
+
+.modal {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  justify-content: center;
+  align-items: center;
+  z-index: 1;
+  opacity: 0;
+  transition: opacity 1.3s ease-in-out;
+}
+
+.modal.show {
+  display: flex;
+  opacity: 1;
+}
+
+.modal-content {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  max-width: 400px;
+  width: 100%;
+  opacity: 0;
+  transform: translateY(-20px);
+  transition: opacity 0.3s ease-in-out, transform 1.3s ease-in-out;
+}
+
+.modal.show .modal-content {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.close {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  font-size: 30px;
+  cursor: pointer;
 }

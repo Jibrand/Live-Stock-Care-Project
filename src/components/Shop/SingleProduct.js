@@ -50,41 +50,20 @@ export default function App() {
     }, [Abouts]);
 
 
-    useEffect(() => {
-        const query = `*[_type == "Products"]`;
-        const query1 = `*[_type == "Products" && _id == "${params.id}"]`;
-        const fetchProducts = async () => {
-            try {
-                const productsData = await client.fetch(query1);
-                const productCategoryIds = productsData.map((product) => product.category._ref);
-                const categoryQuery = `*[_type == "category" && _id in [${productCategoryIds
-                    .map((id) => `"${id}"`)
-                    .join(",")}]]`;
+    const [products, setProducts] = useState([])
+  useEffect(() => {
+    const query = `count(*[_type == 'Products'])`;
+    const fetchProducts = async () => {
+        const [  a] = await Promise.all([
+            client.fetch(` *[_type == "Products" && _id == "${params.id}"] `)
+        ]);
+       
+        setAbouts(a)
+        setIsLoading(false);
+    };
 
-                const [categoriesData] = await Promise.all([
-                    client.fetch(categoryQuery),
-                ]);
-
-                const categoryMap = {};
-                categoriesData.forEach((category) => {
-                    categoryMap[category._id] = category.name;
-                });
-
-                const productsWithCategoryName = productsData.map((product) => ({
-                    ...product,
-                    categoryName: categoryMap[product.category._ref],
-                }));
-
-                setAbouts(productsWithCategoryName);
-                setIsLoading(false);
-            } catch (error) {
-                setError(error.message);
-                setIsLoading(false);
-            }
-        };
-
-        fetchProducts();
-    }, []);
+    fetchProducts();
+}, []);
 
 
     const handleBasicClick = (value) => {
@@ -142,12 +121,12 @@ export default function App() {
                                 </MDBCol>
                                 <MDBCol md='7'>
                                     <MDBContainer className=' '>
-                                        <h5 className='teko' style={{ textAlign: "left", paddingTop: "20px", fontSize: "15px" }}>     {t('l73')} / {product.categoryName} / {product.name}</h5>
+                                        <h5 className='teko' style={{ textAlign: "left", paddingTop: "20px", fontSize: "15px" }}>     {t('l73')}  / {product.name}</h5>
                                         <h5 className='shop-sidebar-h51' style={{ textAlign: "left", paddingTop: "15px", fontcSize: "14px" }}><u><b> {product.categoryName}   </b></u></h5>
                                         <h5 className='' style={{ textAlign: "left", paddingTop: "15px", fontSize: "40px", fontWeight: "bold" }}><b>{product.name}</b></h5>
-                                        <h5 className='ostwold' style={{ textAlign: "left", paddingTop: "05px", fontSize: "25px", fontWeight: "bold" }}><b> ${product.price}</b></h5>
                                         <h5 className='' style={{ textAlign: "left", paddingTop: "05px", fontSize: "18px" }}>
                                             <PortableText content={product.shortdescription} serializers={{ h1: (props) => <h1 style={{ color: "red" }} {...props} />, li: ({ children }) => <li className="special-list-item">{children}</li>, }} />
+                                        <h5 className='ostwold' style={{ textAlign: "left", paddingTop: "05px", fontSize: "21px", fontWeight: "bold" ,marginLeft:"10px"}}><b> {product.price}Rs</b></h5>
                                         </h5>
                                         <div class="flex-container" style={{ display: "flex" }}>
 
@@ -195,9 +174,9 @@ export default function App() {
                                 <MDBTabsPane show={basicActive === 'tab2'}>Tab 2 content</MDBTabsPane>
                                 <MDBTabsPane show={basicActive === 'tab3'}>Tab 3 content</MDBTabsPane>
                             </MDBTabsContent>
-                            <Sin2 />
                         </Container>
                     ))}
+                            <Sin2 />
                     <Footer />
                 </>
             )}

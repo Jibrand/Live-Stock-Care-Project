@@ -96,7 +96,7 @@ function App() {
         currentdeposit,
       };
 
-      const response = await axios.post(`${Api}/api/register`, imageData);
+      const response = await axios.post(`${Api}/api/register/pm`, imageData);
 
       const userCredentials = {
         firstname: firstName,

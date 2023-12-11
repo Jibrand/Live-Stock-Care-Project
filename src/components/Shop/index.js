@@ -78,19 +78,7 @@ export default function App() {
                                                     onChange={handleSearchInputChange} placeholder='Search products....' />
                                             </MDBInputGroup>
                                         </MDBContainer>
-                                        <MDBContainer style={{ paddingBottom: "20px" }} className='shop-col-1 sm-missing'>
-                                            <h5 className='shop-sidebar-h5' style={{ textAlign: "left", paddingTop: "20px" }}><b>{t('l69')}</b></h5>
-                                            <p></p>
-                                            {products.map((product) => (
-                                                <p style={{ marginRight: "100px", marginBottom: "-2px", color: "#e5b509", cursor: "pointer" }} onClick={() => categoryS1(product.name)} >
-                                                    <b>    {product.name}</b>
-                                                    {/* <span className='shop-sidebar-span'>{product.categoryCount}</span> */}
-                                                </p>
-                                            ))}
-
-
-
-                                        </MDBContainer>
+                                        
                                         <br />
                                         <MDBContainer style={{ paddingBottom: "20px" }} className='shop-col-1 sm-missing    '>
                                             <h5 className='shop-sidebar-h5' style={{ textAlign: "left", paddingTop: "20px" }}><b>{t('l70')}</b></h5>
@@ -120,7 +108,7 @@ export default function App() {
                                                                     </div>
                                                                 </div>
                                                                 <div className="d-flex flex-row align-items-center teko" style={{ fontSize: "23px" }}>
-                                                                    ${product.price}
+                                                                    {product.price}Rs
 
                                                                 </div>
                                                             </div>
@@ -135,7 +123,7 @@ export default function App() {
                             </MDBCol>
                             <MDBCol md='8' className="shop-col-2" >
                                 <p className='shop-sidebar-h5 sm-text sm-missing ' style={{ textAlign: "left", paddingTop: "20px", fontSize: "1vw" }}><b>     {t('l76')}</b></p>
-                                {/* <p className='shop-sidebar-h5 sm-missing ' style={{ textAlign: "left", paddingTop: "3px", fontSize: "1.2vw" }}><b>     {t('l75')} <span className='shop-sidebar-span teko' style={{ fontSize: "1.5vw", color: "#e5b509" }}><> [{totalCount}]</></span>       {t('l78')}</b></p> */}
+                                <p className='shop-sidebar-h5 sm-missing ' style={{ textAlign: "left", paddingTop: "3px", fontSize: "1.2vw" }}><b>     {t('l75')} <span className='shop-sidebar-span teko' style={{ fontSize: "1.5vw", color: "#e5b509" }}><> [{totalCount}]</></span>       {t('l78')}</b></p>
                          
                                     <S1 searchInput={searchInput} /> 
 

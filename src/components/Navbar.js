@@ -272,8 +272,8 @@ function NavBar() {
        
           <IconButton aria-label="cart" className="cart_button" onClick={sendToCart} >
 
-            <Badge badgeContent={totalQuantities <= 0 ? 0 : totalQuantities} >
-              <ShoppingCartIcon style={{ color: "#FFC200" }} />
+            <Badge badgeContent={totalQuantities <= 0 ? 0 : totalQuantities} color="secondary">
+              <ShoppingCartIcon style={{ color: "#e5b509" }} />
             </Badge>
 
           </IconButton>

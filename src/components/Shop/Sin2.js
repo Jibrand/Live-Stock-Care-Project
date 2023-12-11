@@ -33,41 +33,27 @@ const Sin2 = () => {
     const navigate = useNavigate()
 
 
+    const [products, setProducts] = useState([])
+    const [isLoading, setIsLoading] = useState(false)
     useEffect(() => {
-        const query = `*[_type == "Products"]`;
+      const query = `count(*[_type == 'Products'])`;
+      const fetchProducts = async () => {
+          const [  a] = await Promise.all([
+            
+              client.fetch(' *[_type == "Products"] | order(dateCreated desc)[0..3] ')
+          ]);
+         
+          setAbouts(a)
+          setIsLoading(false);
+      };
+  
+      fetchProducts();
+  }, []);
 
-        const query1 = ` *[_type == "Products"] | order(dateCreated desc)[0..3]`;
-        const fetchProducts = async () => {
-            const productsData = await client.fetch(query1);
-            const productCategoryIds = productsData.map((product) => product.category._ref);
-            const categoryQuery = `*[_type == "category" && _id in [${productCategoryIds
-                .map((id) => `"${id}"`)
-                .join(",")}]]`;
-
-            const [categoriesData] = await Promise.all([
-                client.fetch(categoryQuery),
-            ]);
-
-            const categoryMap = {};
-            categoriesData.forEach((category) => {
-                categoryMap[category._id] = category.name;
-            });
-
-            const productsWithCategoryName = productsData.map((product) => ({
-                ...product,
-                categoryName: categoryMap[product.category._ref],
-            }));
-
-            setAbouts(productsWithCategoryName);
-        };
-
-
-        fetchProducts();
-    }, []);
     return (
         <>
-            <hr style={{ color: "purple" }} />
-            <h5 className='' style={{ textAlign: "left", paddingTop: "15px", fontSize: "35px", fontWeight: "bold" }}><b>     {t('l72')}</b></h5>
+            <hr className='' style={{ color: "purple" }} />
+            <h5 className='' style={{ textAlign: "left",marginLeft:"60px", paddingTop: "15px", fontSize: "35px", fontWeight: "bold" }}><b>     {t('l72')}</b></h5>
             <section class="text-gray-600 body-font">
                 <div class="container px-2 py-20 mx-auto">
                     <div class="flex flex-wrap -m-4 sm:ml-0 ml-1">

@@ -17,6 +17,8 @@ import { client, urlFor } from './../../Client';
 import NavBar from "../Navbar";
 import Button from '@mui/material/Button';
 import RemoveIcon from '@mui/icons-material/Remove';
+import CustomModal from './CustomModal'; // Import your modal component
+
 import IconButton from '@mui/material/IconButton';
 import AddIcon from '@mui/icons-material/Add';
 import { useNavigate } from "react-router-dom";
@@ -35,7 +37,17 @@ export default function QuantityEdit() {
     const [isButtonDisabled, setIsButtonDisabled] = useState(false);
     const [isToastLoading, setIsToastLoading] = useState(false);
 
+    const [isModalOpen, setIsModalOpen] = useState(false);
 
+    // ... (other code)
+  
+    const handleModalButtonClick = () => {
+      setIsModalOpen(true);
+    };
+  
+    const toggleModal = () => {
+      setIsModalOpen(!isModalOpen);
+    };
 
     useEffect(() => {
         if (!user) {
@@ -57,48 +69,7 @@ export default function QuantityEdit() {
     const handleNext = async () => {
         setIsButtonDisabled(true); // Disable the button
         setIsToastLoading(true);   // Set loading state for the toast
-
-        const stripe = await getStripe();
-
-        const response = await fetch(`${Api}/ppay`, {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify(cartItems),
-        });
-
-        if (response.status === 500) {
-            setIsButtonDisabled(false); // Re-enable the button
-            setIsToastLoading(false);   // Clear loading state for the toast
-            return;
-        }
-
-        const data = await response.json();
-
-        toast.loading('Redirecting...');
-
-        stripe.redirectToCheckout({ sessionId: data.id })
-            .then((result) => {
-                if (result.error) {
-                    // Handle error
-                    console.error(result.error);
-                    toast.error('Error occurred during checkout.');
-                } else {
-                    // No error, the redirect is handled by Stripe
-                    // Perform any additional actions after successful checkout
-                    navigate('/success'); // Redirect to a success page
-                }
-            })
-            .catch((error) => {
-                // Handle error
-                console.error(error);
-                toast.error('Error occurred during checkout.');
-            })
-            .finally(() => {
-                setIsButtonDisabled(false); // Re-enable the button
-                setIsToastLoading(false);   // Clear loading state for the toast
-            });
+        navigate('/success'); // Redirect to a success page
     };
 
 
@@ -225,21 +196,30 @@ export default function QuantityEdit() {
                                                     </MDBTypography>
                                                     <MDBTypography className="font-family-numbers" tag="h5">${totalPrice}</MDBTypography>
                                                 </div>
-                                                <Button
-                                                    onClick={handleNext}
-                                                    className='logo-button mb-4 px-5 mx-5'
-                                                    style={{
-                                                        backgroundColor: '#350076',
-                                                        justifyContent: 'center',
-                                                        color: isCartEmpty ? 'white' : 'white', // Change text color to black when disabled
-                                                    }}
-                                                    disabled={isButtonDisabled || isCartEmpty}
-                                                    variant="contained"
-                                                >
-                                                    {isButtonDisabled ? 'Redirecting...' : 'Pay Now'}
-                                                </Button>
+                                            
 
+                                                
 
+                                                <Button   style={{
+                                                        backgroundColor: '#350076',}} onClick={handleModalButtonClick} variant="contained">
+        Pay Now
+      </Button>
+
+      {/* Render the modal component */}
+
+      <div className={`modal ${isModalOpen ? 'show' : ''}`} onClick={toggleModal}>
+      <div className="modal-content" onClick={(e) => e.stopPropagation()}>
+        <span className="close" onClick={toggleModal}>&times;</span>
+        {/* Add the content of your modal here */}
+        <div className='font-bold text-2xl mb-4'>One Last Step</div>
+        <div className='mb-2'>To Continue Further You have to pay<b> {totalPrice}Rs </b>to this Account</div>
+        <div className='font-bold ' style={{color:"#280A43"}}><i>IBAN: RO09PORL8297336485969785</i></div>
+        <div className='font-bold mb-2' style={{color:"#280A43"}}><i>Name: LiveStock Care Ltd</i></div>
+        <div>Wish you a Happy Invesment at LiveStock Care Ltd</div>
+        <Button  style={{
+                                                        backgroundColor: '#350076',}} onClick={handleNext}  variant="contained"> Continue </Button>
+      </div>
+    </div>
 
                                             </div>
                                         </MDBCol>
